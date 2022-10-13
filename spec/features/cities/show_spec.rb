@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'shows index of all cities' do
+RSpec.describe 'shows index of a city' do
   it 'shows a city with attributes' do
     braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
     atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)

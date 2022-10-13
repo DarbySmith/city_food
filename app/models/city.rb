@@ -1,3 +1,3 @@
 class City < ApplicationRecord
-
+  
 end

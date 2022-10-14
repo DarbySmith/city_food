@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_10_13_193448) do
     t.string "name"
     t.integer "population"
     t.boolean "metropolis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -26,6 +28,8 @@ ActiveRecord::Schema.define(version: 2022_10_13_193448) do
     t.string "food_type"
     t.boolean "alcohol_served"
     t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "city_id"
     t.index ["city_id"], name: "index_restaurants_on_city_id"
   end

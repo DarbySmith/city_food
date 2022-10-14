@@ -5,7 +5,7 @@ class CreateCities < ActiveRecord::Migration[5.2]
       t.integer :population
       t.boolean :metropolis
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

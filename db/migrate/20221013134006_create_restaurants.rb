@@ -6,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.boolean :alcohol_served
       t.integer :rating
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

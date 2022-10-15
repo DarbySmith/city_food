@@ -10,6 +10,7 @@ RSpec.describe 'shows index of all cities' do
     expect(page).to have_content(braselton.name)
     expect(page).to have_content(atlanta.name)
     expect(page).to have_selector(:css, 'a[href="/restaurants"]')
+    expect(page).to have_selector(:css, 'a[href="/cities"]')
   end
 
   it 'shows cities in order of most recent created first' do

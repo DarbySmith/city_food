@@ -18,6 +18,7 @@ RSpec.describe 'shows index of a city' do
     expect(page).to have_content(braselton.population)
     expect(page).to have_content(braselton.metropolis)
     expect(page).to have_selector(:css, 'a[href="/restaurants"]')
+    expect(page).to have_selector(:css, 'a[href="/cities"]')
   end
 
   it 'shows the count of restaurants for the city' do

@@ -15,5 +15,6 @@ RSpec.describe 'shows index of a city' do
     expect(page).to have_content(fogo.rating)
     expect(page).to have_content(fogo.city.name)
     expect(page).to have_selector(:css, 'a[href="/restaurants"]')
+    expect(page).to have_selector(:css, 'a[href="/cities"]')
   end
 end

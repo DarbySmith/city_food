@@ -20,5 +20,6 @@ RSpec.describe 'shows index of all restaurants' do
     expect(page).to have_content(jacks.rating)
     expect(page).to have_content(jacks.city.name)
     expect(page).to have_selector(:css, 'a[href="/restaurants"]')
+    expect(page).to have_selector(:css, 'a[href="/cities"]')
   end
 end

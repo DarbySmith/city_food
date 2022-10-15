@@ -11,4 +11,10 @@ RSpec.describe City, type: :model do
   describe 'validations' do
     it {should have_many :restaurants}
   end
+
+  describe '#restaurant_count' do
+    it 'counts the restaurants' do
+      expect(@braselton.restaurant_count).to eq(1)
+    end
+  end
 end

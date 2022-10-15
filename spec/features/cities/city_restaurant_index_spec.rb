@@ -13,7 +13,7 @@ RSpec.describe 'shows index of restaurants for a city' do
     expect(page).to have_content(fogo.food_type)
     expect(page).to have_content(fogo.alcohol_served)
     expect(page).to have_content(fogo.rating)
-
+    expect(page).to have_selector(:css, 'a[href="/restaurants"]')
 
     expect(page).not_to have_content(jacks.name)
   end

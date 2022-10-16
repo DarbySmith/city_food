@@ -3,3 +3,4 @@
 <% @cities.each do |city| %>
   <h3><%= city.name %>  | created at: <%= city.created_at %></h3>
 <% end %>
+<%= link_to "New City", "/cities/new" %>

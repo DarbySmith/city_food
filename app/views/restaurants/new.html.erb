@@ -1,0 +1,11 @@
+<%= form_with url: "/cities/#{@city.id}/restaurants", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :food_type %>
+  <%= form.text_field :food_type %><br>
+  <%= form.label :alcohol_served %>
+  <%= form.text_field :alcohol_served %><br>
+  <%= form.label :rating %>
+  <%= form.text_field :rating %><br>
+  <%= form.submit 'Create Restaurant' %>
+<% end %>

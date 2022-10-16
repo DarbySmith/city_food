@@ -15,7 +15,7 @@ RSpec.describe 'shows index of all cities' do
 
   it 'shows cities in order of most recent created first' do
     braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
-    atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)
+    atlanta = City.create!(name:'Atlanta', population:497642, metropolis:true)
 
     visit '/cities'
 
@@ -23,5 +23,24 @@ RSpec.describe 'shows index of all cities' do
     # that = find('.that')
 
     expect(atlanta.name).to appear_before(braselton.name)
+  end
+
+  it 'has a link to create new cities on cities index' do
+    braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
+    atlanta = City.create!(name:'Atlanta', population:497642, metropolis:true)
+
+    visit '/cities'
+
+    click_link 'New City'
+
+    expect(current_path).to eq('/cities/new')
+    fill_in "Name", with: 'Charleston'
+    fill_in "Population", with: 137041
+    fill_in "Metropolis", with: true
+    
+    click_on 'Create City'
+    
+    expect(current_path).to eq("/cities")
+    expect(page).to have_content("Charleston")
   end
 end

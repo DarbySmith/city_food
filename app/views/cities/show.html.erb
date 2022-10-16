@@ -2,3 +2,4 @@
 <p>Population: <%= @city.population %></p>
 <p>Metropolis: <%= @city.metropolis %></p>
 <p>Number of Restaurants: <%= @city.restaurant_count %></p>
+<%= button_to "Restaurants in #{@city.name}", "/cities/#{@city.id}/restaurants", method: :get%>

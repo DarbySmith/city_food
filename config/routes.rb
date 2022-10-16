@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/restaurants/:id', to: 'restaurants#show'
   get '/cities/:id/restaurants', to: 'cities#city_restaurant_index'
   post '/cities', to: 'cities#create'
+  get '/cities/:id/edit', to: 'cities#edit'
+  patch '/cities/:id/edit', to: 'cities#update'
 end

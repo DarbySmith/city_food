@@ -11,4 +11,18 @@ class CitiesController < ApplicationController
   def city_restaurant_index
     @city_restaurants = show.restaurants
   end
+
+  def new
+
+  end
+
+  def create
+    City.create!(city_params)
+    redirect_to '/cities'
+  end
+
+  private
+  def city_params
+    params.permit(:name, :population, :metropolis)
+  end
 end

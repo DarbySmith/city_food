@@ -12,6 +12,7 @@ RSpec.describe 'Restaurant in city' do
     @atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)
     @fogo = @atlanta.restaurants.create!(name: 'Fogo de Chao', food_type: 'steak house', alcohol_served: true, rating: 5)
     @jacks = @braselton.restaurants.create!(name: 'Jacks Public House', food_type:'American', alcohol_served: true, rating: 5)
+    @zaxbys = @braselton.restaurants.create!(name: 'Zaxbys', food_type: 'chicken', alcohol_served: false, rating: 5)
   end
   
   it 'shows a link to restaurants in that city' do
@@ -35,5 +36,14 @@ RSpec.describe 'Restaurant in city' do
     click_on "Create Restaurant"
     expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
     expect(page).to have_content("Cotton Calf")
+  end
+
+  it 'shows only the restaurants that serve alchol' do
+    visit "/restaurants"
+
+    expect(page).to have_content("Jacks Public House")
+    expect(page).to have_content("Fogo de Chao")
+
+    expect(page).to_not have_content("Zaxbys")
   end
 end

@@ -10,6 +10,9 @@ class CitiesController < ApplicationController
 
   def city_restaurant_index
     @city_restaurants = show.restaurants
+    if params[:sort] == "true"
+      @city_restaurants = show.restaurants.order(:name)
+    end
   end
 
   def new
@@ -30,6 +33,12 @@ class CitiesController < ApplicationController
     city.update(city_params)
     redirect_to "/cities/#{city.id}"
   end
+
+  # def order_restaurants
+  #   # require 'pry'; binding.pry
+  #   @city_restaurants = show.restaurants.order(:name)
+  #   redirect_to "/cities/#{@city.id}/restaurants"
+  # end
 
   private
   def city_params

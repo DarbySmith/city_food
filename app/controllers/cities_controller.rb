@@ -34,12 +34,6 @@ class CitiesController < ApplicationController
     redirect_to "/cities/#{city.id}"
   end
 
-  # def order_restaurants
-  #   # require 'pry'; binding.pry
-  #   @city_restaurants = show.restaurants.order(:name)
-  #   redirect_to "/cities/#{@city.id}/restaurants"
-  # end
-
   private
   def city_params
     params.permit(:name, :population, :metropolis)

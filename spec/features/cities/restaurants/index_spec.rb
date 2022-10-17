@@ -11,8 +11,8 @@ RSpec.describe 'Restaurant in city' do
     @braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
     @atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)
     @fogo = @atlanta.restaurants.create!(name: 'Fogo de Chao', food_type: 'steak house', alcohol_served: true, rating: 5)
-    @jacks = @braselton.restaurants.create!(name: 'Jacks Public House', food_type:'American', alcohol_served: true, rating: 5)
     @zaxbys = @braselton.restaurants.create!(name: 'Zaxbys', food_type: 'chicken', alcohol_served: false, rating: 5)
+    @jacks = @braselton.restaurants.create!(name: 'Jacks Public House', food_type:'American', alcohol_served: true, rating: 5)
   end
   
   it 'shows a link to restaurants in that city' do
@@ -36,5 +36,14 @@ RSpec.describe 'Restaurant in city' do
     click_on "Create Restaurant"
     expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
     expect(page).to have_content("Cotton Calf")
+  end
+
+  it 'shows a link to alphabetize restaurants name' do
+    visit "/cities/#{@braselton.id}/restaurants"
+
+    click_link "Sort by name"
+
+    expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
+    expect(@jacks.name).to appear_before(@zaxbys.name)
   end
 end

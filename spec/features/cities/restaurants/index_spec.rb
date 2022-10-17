@@ -37,13 +37,4 @@ RSpec.describe 'Restaurant in city' do
     expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
     expect(page).to have_content("Cotton Calf")
   end
-
-  it 'shows only the restaurants that serve alchol' do
-    visit "/restaurants"
-
-    expect(page).to have_content("Jacks Public House")
-    expect(page).to have_content("Fogo de Chao")
-
-    expect(page).to_not have_content("Zaxbys")
-  end
 end

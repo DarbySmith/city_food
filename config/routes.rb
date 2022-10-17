@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   patch '/cities/:id/edit', to: 'cities#update'
   get '/cities/:city_id/restaurants/new', to: 'restaurants#new'
   post 'cities/:city_id/restaurants', to: 'restaurants#create'
+  get '/restaurants/:id/edit', to: 'restaurants#edit'
+  patch '/restaurants/:id', to: 'restaurants#update'
 end

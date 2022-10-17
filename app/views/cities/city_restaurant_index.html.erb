@@ -6,3 +6,4 @@
   <p>Alcohol?: <%= restaurant.alcohol_served %></p>
   <p>Rating: <%= restaurant.rating %></p>
 <% end %>
+<%= link_to "Add New Restaurant", "/cities/#{@city.id}/restaurants/new" %>

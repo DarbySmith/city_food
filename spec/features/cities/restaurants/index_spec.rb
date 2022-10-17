@@ -20,4 +20,20 @@ RSpec.describe 'Restaurant in city' do
     click_button "Restaurants in #{@braselton.name}"
     expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
   end
+  
+  it 'shows a link to add a new restaurant to the city' do
+    visit "/cities/#{@braselton.id}/restaurants"
+    
+    click_link "Add New Restaurant"
+
+    expect(current_path).to eq("/cities/#{@braselton.id}/restaurants/new")
+    fill_in :name, with: 'Cotton Calf'
+    fill_in :food_type, with: 'Steakhouse'
+    fill_in :alcohol_served, with: true
+    fill_in :rating, with: 5
+
+    click_on "Create Restaurant"
+    expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
+    expect(page).to have_content("Cotton Calf")
+  end
 end

@@ -3,4 +3,5 @@
 <p>Metropolis: <%= @city.metropolis %></p>
 <p>Number of Restaurants: <%= @city.restaurant_count %></p>
 <%= button_to "Restaurants in #{@city.name}", "/cities/#{@city.id}/restaurants", method: :get%>
+<%= button_to "Delete", "/cities/#{@city.id}", method: :delete %>
 <%= link_to "Edit City", "/cities/#{@city.id}/edit" %>

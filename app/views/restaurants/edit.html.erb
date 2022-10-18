@@ -1,11 +1,11 @@
 <%= form_with url: "/restaurants/#{@restaurant.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %><br>
+  <%= form.text_field :name, value: @restaurant.name %><br>
   <%= form.label :food_type %>
-  <%= form.text_field :food_type %><br>
+  <%= form.text_field :food_type, value: @restaurant.food_type %><br>
   <%= form.label :alcohol_served %>
-  <%= form.text_field :alcohol_served %><br>
+  <%= form.text_field :alcohol_served, value: @restaurant.alcohol_served %><br>
   <%= form.label :rating %>
-  <%= form.text_field :rating %><br>
+  <%= form.text_field :rating, value: @restaurant.rating %><br>
   <%= form.submit 'Update Restaurant' %>
 <% end %>

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post 'cities/:city_id/restaurants', to: 'restaurants#create'
   get '/restaurants/:id/edit', to: 'restaurants#edit'
   patch '/restaurants/:id', to: 'restaurants#update'
+  delete '/cities/:id', to: 'cities#destroy'
 end

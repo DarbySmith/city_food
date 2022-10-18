@@ -1,8 +1,9 @@
 <h1>All Cities<h1>
 
 <% @cities.each do |city| %>
-  <h3><%= city.name %></h3>
-  <p>Created at: <%= city.created_at %></p><br>
-  <%= link_to "Update #{city.name}", "/cities/#{city.id}/edit" %>
+  <h2><%= city.name %></h2>
+  <p><%= link_to "More info on #{city.name}", "/cities/#{city.id}" %></p>
+  <p>Created at: <%= city.created_at %></p>
+  <p><%= link_to "Update #{city.name}", "/cities/#{city.id}/edit" %></p>
 <% end %>
 <%= link_to "New City", "/cities/new" %>

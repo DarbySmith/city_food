@@ -1,9 +1,9 @@
 <%= form_with url: "/cities/#{@city.id}/edit", method: :patch, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %><br>
+  <%= form.text_field :name, value: @city.name %><br>
   <%= form.label :population %>
-  <%= form.text_field :population %><br>
+  <%= form.text_field :population, value: @city.population %><br>
   <%= form.label :metropolis %>
-  <%= form.text_field :metropolis %><br>
+  <%= form.text_field :metropolis, value: @city.metropolis %><br>
   <%= form.submit 'Update City' %>
 <% end %>

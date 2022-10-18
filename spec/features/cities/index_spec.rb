@@ -76,4 +76,16 @@ RSpec.describe 'shows index of all cities' do
     expect(page).to have_content(12178)
     expect(page).to have_content(false)
   end
+
+  it 'has a button to delete a city' do
+    braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
+    atlanta = City.create!(name:'Atlanta', population:497642, metropolis:true)
+
+    visit "/cities"
+
+    click_button "Delete #{braselton.name}"
+
+    expect(current_path).to eq("/cities")
+    expect(page).to_not have_content(braselton.name)
+  end
 end

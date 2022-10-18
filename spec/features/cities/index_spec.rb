@@ -43,4 +43,24 @@ RSpec.describe 'shows index of all cities' do
     expect(current_path).to eq("/cities")
     expect(page).to have_content("Charleston")
   end
+
+  it 'has a link to update a city' do
+    braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
+    atlanta = City.create!(name:'Atlanta', population:497642, metropolis:true)
+
+    visit '/cities'
+
+    click_link "Update #{braselton.name}"
+
+    expect(current_path).to eq("/cities/#{braselton.id}/edit")
+    fill_in :name, with: 'Braselton'
+    fill_in :population, with: 12148
+    fill_in :metropolis, with: false
+
+    click_on "Update City"
+    
+    expect(current_path).to eq("/cities/#{braselton.id}")
+    expect(page).to have_content(12148)
+    expect(page).to_not have_content(12178)
+  end
 end

@@ -59,4 +59,18 @@ RSpec.describe 'shows index of all restaurants' do
     expect(page).to have_content("Steakhouse")
     expect(page).to_not have_content("steak house")
   end
+
+  it 'has a link to the show page for each restaurant' do
+    braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
+    atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)
+    fogo = atlanta.restaurants.create!(name: 'Fogo de Chao', food_type: 'steak house', alcohol_served: true, rating: 5)
+    jacks = braselton.restaurants.create!(name: 'Jacks Public House', food_type:'American', alcohol_served: true, rating: 5)
+
+    visit "/restaurants"
+
+    click_link "#{fogo.name}"
+
+    expect(current_path).to eq("/restaurants/#{fogo.id}")
+    expect(page).to have_content(fogo.name)
+  end
 end

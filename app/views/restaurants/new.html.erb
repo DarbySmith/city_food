@@ -6,6 +6,6 @@
   <%= form.label :alcohol_served %>
   <%= form.text_field :alcohol_served %><br>
   <%= form.label :rating %>
-  <%= form.text_field :rating %><br>
+  <%= form.number_field :rating, in: 1..5, step: 1 %><br>
   <%= form.submit 'Create Restaurant' %>
 <% end %>

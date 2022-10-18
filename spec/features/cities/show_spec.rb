@@ -44,4 +44,15 @@ RSpec.describe 'shows index of a city' do
     expect(current_path).to eq("/cities/#{hoschton.id}")
     expect(page).to have_content("Hoschton")
   end
+
+  it 'has a link to delete the city' do
+    hoschton = City.create!(name: 'Hoschton', population: 12450, metropolis:false) 
+    
+    visit "/cities/#{hoschton.id}"
+
+    click_button "Delete"
+
+    expect(current_path).to eq("/cities")
+    expect(page).to_not have_content(hoschton.name)
+  end
 end

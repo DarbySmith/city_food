@@ -7,4 +7,5 @@
     <li>Alcohol?: <%= restaurant.alcohol_served %></li>
     <li>5 Star Rating: <%= restaurant.rating %></li>
   <%= link_to "Update #{restaurant.name}", "/restaurants/#{restaurant.id}/edit" %>
+  <%= button_to "Delete #{restaurant.name}", "/restaurants/#{restaurant.id}", method: :delete %>
 <% end %>

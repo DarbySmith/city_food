@@ -64,4 +64,17 @@ RSpec.describe 'Restaurant in city' do
     expect(page).to have_content("Steakhouse")
     expect(page).to_not have_content("steak house")
   end
+
+  it 'has a form that allows to filter the restaurants' do
+    marg = @braselton.restaurants.create!(name: 'Las Margaritas', food_type:'Mexican', alcohol_served: true, rating: 3)
+    
+    visit "/cities/#{@braselton.id}/restaurants"
+
+    fill_in :search, with: 4
+
+    click_on "Submit"
+
+    expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
+    expect(page).to_not have_content(marg.name)
+  end
 end

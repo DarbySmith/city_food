@@ -13,6 +13,9 @@ class CitiesController < ApplicationController
     if params[:sort] == "true"
       @city_restaurants = show.restaurants.order(:name)
     end
+    if params[:search]
+      @city_restaurants = show.restaurants.where('rating >= ?', params[:search])
+    end
   end
 
   def new
@@ -41,6 +44,6 @@ class CitiesController < ApplicationController
 
   private
   def city_params
-    params.permit(:name, :population, :metropolis)
+    params.permit(:name, :population, :metropolis, :search)
   end
 end

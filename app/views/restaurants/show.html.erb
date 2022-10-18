@@ -4,4 +4,5 @@
 <p>Food Type: <%= @restaurant.food_type %></p>
 <p>Alcohol?: <%= @restaurant.alcohol_served %></p>
 <p>5 Star Rating: <%= @restaurant.rating %></p>
+<%= button_to "Delete", "/restaurants/#{@restaurant.id}", method: :delete %>
 <%= link_to "Update Restaurant", "/restaurants/#{@restaurant.id}/edit" %>

@@ -46,4 +46,22 @@ RSpec.describe 'Restaurant in city' do
     expect(current_path).to eq("/cities/#{@braselton.id}/restaurants")
     expect(@jacks.name).to appear_before(@zaxbys.name)
   end
+
+  it 'shows a link to update a restaurant in that city' do
+    visit "/cities/#{@atlanta.id}/restaurants"
+
+    click_link "Update #{@fogo.name}"
+
+    expect(current_path).to eq("/restaurants/#{@fogo.id}/edit")
+    fill_in :name, with: "Fogo de Chao"
+    fill_in :food_type, with: "Steakhouse"
+    fill_in :alcohol_served, with: true
+    fill_in :rating, with: 5
+
+    click_on "Update Restaurant"
+
+    expect(current_path).to eq("/restaurants/#{@fogo.id}")
+    expect(page).to have_content("Steakhouse")
+    expect(page).to_not have_content("steak house")
+  end
 end

@@ -7,6 +7,6 @@
   <p>Food Type: <%= restaurant.food_type %></p>
   <p>Alcohol?: <%= restaurant.alcohol_served %></p>
   <p>Rating: <%= restaurant.rating %></p>
-  <%= link_to "Update #{restaurant.name}", "/restaurants/#{restaurant.id}/edit" %>
+  <p><%= link_to "Update #{restaurant.name}", "/restaurants/#{restaurant.id}/edit" %></p>
 <% end %>
 <%= link_to "Add New Restaurant", "/cities/#{@city.id}/restaurants/new" %>

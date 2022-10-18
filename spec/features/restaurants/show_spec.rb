@@ -38,4 +38,18 @@ RSpec.describe 'shows index of a city' do
     expect(current_path).to eq("/restaurants/#{fogo.id}")
     expect(page).to have_content("Fogo de Chao")
   end
+
+  it 'has a button to delete the restaurant' do
+    braselton = City.create!(name:'Braselton', population:12178, metropolis:false)
+    atlanta = City.create!(name:'Atlanta', population:49762, metropolis:true)
+    fogo = atlanta.restaurants.create!(name: 'Fodo de Chao', food_type: 'steak house', alcohol_served: true, rating: 5)
+    jacks = braselton.restaurants.create!(name: 'Jacks Public House', food_type:'American', alcohol_served: true, rating: 5)
+
+    visit "/restaurants/#{jacks.id}"
+
+    click_button "Delete"
+
+    expect(current_path).to eq("/restaurants")
+    expect(page).to_not have_content(jacks.name)
+  end
 end

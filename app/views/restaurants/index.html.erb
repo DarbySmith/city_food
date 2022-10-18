@@ -1,7 +1,7 @@
 <h1>Restaurants</h1>
 
 <% @restaurants.each do |restaurant| %>
-  <h2><ul><%= restaurant.name %></ul></h2>
+  <h2><ul><%= link_to "#{restaurant.name}", "/restaurants/#{restaurant.id}" %></ul></h2>
     <li>City: <%= restaurant.city.name %></lli>
     <li>Food Type: <%= restaurant.food_type %></li>
     <li>Alcohol?: <%= restaurant.alcohol_served %></li>
